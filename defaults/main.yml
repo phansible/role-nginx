@@ -1,0 +1,6 @@
+---
+nginx:
+  docroot: "/vagrant"
+  servername: "myApp.vb"
+php:
+  ppa: "php5-5.6"
