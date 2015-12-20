@@ -19,7 +19,7 @@ server {
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_pass unix:{% if php.ppa == 'php-7.0' %}/var/run/php/php7.0-fpm.sock{% else %}/var/run/php5-fpm.sock{% endif %};
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
