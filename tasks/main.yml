@@ -1,7 +1,10 @@
 ---
+- name: Add Nginx Repository
+  apt_repository: repo='ppa:nginx/stable' state=present
+  
 - name: Install Nginx
   sudo: yes
-  apt: pkg=nginx state=latest
+  apt: pkg=nginx state=latest update_cache=true
 
 - name: Change default nginx site
   sudo: yes
