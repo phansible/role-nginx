@@ -1,12 +1,17 @@
 ---
-- name: Add Nginx Repository
-  apt_repository: repo='ppa:nginx/stable' state=present
-  
 - name: Install Nginx
   become: yes
-  apt: pkg=nginx state=latest update_cache=true
+  apt:
+    pkg: nginx
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
 
 - name: Change default nginx site
   become: yes
   template: src=default.tpl dest=/etc/nginx/sites-available/default
   notify: restart nginx
+
+- name: Ensure nginx is running and enabled
+  become: yes
+  service: name=nginx state=started enabled=yes

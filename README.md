@@ -2,23 +2,44 @@
 
 [![CI](https://github.com/phansible/role-nginx/actions/workflows/ci.yml/badge.svg)](https://github.com/phansible/role-nginx/actions/workflows/ci.yml)
 
-An Ansible Role that installs [Nginx](http://nginx.org/en/) on Ubuntu specifically created with [Phansible](http://phansible.com/) in mind.
+An Ansible Role that installs [Nginx](https://nginx.org/) from the distribution packages and configures a default site that hands PHP requests to php-fpm, specifically created with [Phansible](http://phansible.com/) in mind.
 
 ## Requirements
 
-// TODO
+- Ubuntu 22.04, 24.04, 26.04 or Debian 12, 13
+- Ansible 2.15 or newer
+- PHP requests are passed to `/run/php/php-fpm.sock`, the socket the distro and sury php-fpm packages register for the installed PHP version. Install php-fpm separately, for example with [role-php](https://github.com/phansible/role-php).
 
 ## Role Variables
 
-// TODO
+Available variables are listed below, along with default values (see `defaults/main.yml`):
+
+```yaml
+nginx:
+    docroot: "/vagrant"
+    servername: "myApp.vb"
+```
+
+- `nginx.docroot`: document root of the default site.
+- `nginx.servername`: `server_name` of the default site.
 
 ## Dependencies
 
-// TODO
+None.
 
 ## Example Playbook
 
-// TODO
+```yaml
+- hosts: all
+  become: yes
+  vars:
+    nginx:
+      docroot: /var/www/app/public
+      servername: app.test
+  roles:
+    - role-php
+    - role-nginx
+```
 
 ## License
 
