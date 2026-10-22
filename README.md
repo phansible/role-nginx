@@ -1,6 +1,6 @@
 # Phansible Role: Nginx
 
-[![Build Status](https://travis-ci.org/phansible/role-nginx.svg?branch=master)](https://travis-ci.org/phansible/role-nginx)
+[![CI](https://github.com/phansible/role-nginx/actions/workflows/ci.yml/badge.svg)](https://github.com/phansible/role-nginx/actions/workflows/ci.yml)
 
 An Ansible Role that installs [Nginx](http://nginx.org/en/) on Ubuntu specifically created with [Phansible](http://phansible.com/) in mind.
 
